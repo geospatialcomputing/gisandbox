@@ -44,3 +44,10 @@ systemctl start jupyterhub.service
 # this will need to be here regardless, because we are changing settings with tljh-config and /opt/tljh/config/jupyterhub_config.d
 tljh-config reload
 
+echo
+echo "***************************************************************************"
+echo "*   Congratulations! Now you can login in your GISandbox instance at:     *"
+echo "*                   https://${MY_IP}                               *"
+echo "***************************************************************************"
+echo
+
