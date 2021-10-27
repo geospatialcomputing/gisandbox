@@ -1,0 +1,46 @@
+#!/bin/bash
+
+set -e # stop on error, make-like
+
+# *************************************************************************************************************************
+# *                                                                                                                       *
+# *                To learn about the settings below, see the following and subsequent sections                           *
+# *  https://native-authenticator.readthedocs.io/en/latest/options.html#use-recaptcha-to-prevent-scripted-signup-attacks  *
+# *                                                                                                                       *
+# *************************************************************************************************************************
+
+# Note that the documentation linked above uses the jupyterhub_config.py syntax, not the TLJH one which you are
+# supposed to use. For details on the latter see the page
+# https://tljh.jupyter.org/en/latest/topic/authenticator-configuration.html#setting-authenticator-properties
+
+# uncomment the following and provide 'your URL' to enable Term of Service agreement
+#tljh-config set auth.NativeAuthenticator.tos 'I agree to the <a target="_blank" href="your URL">Terms of Service</a>'
+
+# uncomment the following and provide your key and secret to enable recaptcha
+#tljh-config set auth.NativeAuthenticator.recaptcha_key "your key"
+#tljh-config set auth.NativeAuthenticator.recaptcha_secret "your secret"
+
+
+# edit and uncomment the following
+#tljh-config set auth.NativeAuthenticator.allow_self_approval_for '.*@.*\.edu$'
+#echo "c.Authenticator.self_approval_server = {'url': 'smtp.gmail.com', 'usr': 'yourself', 'pwd': 'yourpassword'}" >> /opt/tljh/config/jupyterhub_config.d/nativeauth_settings.py
+MY_IP=`curl https://ipecho.net/plain`
+#echo "c.Authenticator.self_approval_email = ('you@example.com', 'Welcome to JupyterHub account', \"Click here to enable your account: https://${MY_IP}{approval_url}\nPlease do not click if you have not requested an account yourself.\")" >> /opt/tljh/config/jupyterhub_config.d/nativeauth_settings.py
+#tljh-config set auth.NativeAuthenticator.secret_key `/opt/tljh/user/bin/python -c 'import random, string; print("".join(random.choices(string.ascii_uppercase + string.ascii_lowercase + string.digits,k=64)))'`
+
+
+# TODO this whole section eventually will be unncessary when v1.0 will be released and included in TLJH
+/opt/tljh/hub/bin/pip3 install --force-reinstall git+https://github.com/jupyterhub/nativeauthenticator.git@1.0.5
+/opt/tljh/hub/bin/pip3 install --upgrade ruamel.yaml==0.15.*   # conflicting upgrade than needs to be downgraded
+
+# TODO when force-reinstalling nativeauthenticator, the SQLite DB needs to be recreated
+rm -f /opt/tljh/state/jupyterhub.sqlite
+# TODO when force-reinstalling nativeauthenticator, the whole Python service needs to be restarted
+systemctl stop jupyterhub.service
+systemctl stop traefik.service
+systemctl start traefik.service
+systemctl start jupyterhub.service
+
+# this will need to be here regardless, because we are changing settings with tljh-config and /opt/tljh/config/jupyterhub_config.d
+tljh-config reload
+
