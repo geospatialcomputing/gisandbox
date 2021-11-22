@@ -31,7 +31,7 @@ MY_IP=`curl https://ipecho.net/plain`
 
 # TODO this whole section eventually will be unncessary when v1.0 will be released and included in TLJH
 /opt/tljh/hub/bin/pip3 install --force-reinstall git+https://github.com/jupyterhub/nativeauthenticator.git@1.0.5
-/opt/tljh/hub/bin/pip3 install --upgrade ruamel.yaml==0.15.*   # conflicting upgrade than needs to be downgraded
+## /opt/tljh/hub/bin/pip3 install --upgrade ruamel.yaml==0.15.*   # conflicting upgrade than needed to be downgraded -- should not required anymore
 
 # TODO when force-reinstalling nativeauthenticator, the SQLite DB needs to be recreated
 rm -f /opt/tljh/state/jupyterhub.sqlite
