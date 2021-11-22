@@ -12,11 +12,11 @@ Includes R and python with a number of relevant geospatial packages.
 3. Make sure you have root access and make is installed, e.g. by running `sudo apt install make` (if this fails, you cannot move forward)
 4. Clone this repository and cd into the cloned directory
 5. Run `sudo make`
-6. Open and **EDIT** `post_makefile_script`, following the instructions inside there (we will eventually document them better here)
+6. When that completes successfully, open and **EDIT** in the shell the [`post_makefile_script`](post_makefile_script), following the instructions inside there (we will eventually document them better here)
 7. Run `sudo ./post_makefile_script`
 8. Enjoy your newly installed GISandbox instance, which you can login into via Jupyterhub.
 
 # Notes
 1. This does everything that https://tljh.jupyter.org/en/latest/install/custom-server.html suggests doing for you, **besides** creating users
-3. The installation utilizes a self-signed certificate, which browsers freak out about (despite being safer than not using HTTPS at all which instead browsers like better). To avoid this problem and use an official certificate, see CERTIFICATE.md
+3. The installation utilizes a self-signed certificate, which browsers freak out about (despite being safer than not using HTTPS at all which instead browsers like better). To avoid this problem and use an official certificate, see [CERTIFICATE.md](CERTIFICATE.md)
 2. The Jupyterhub admin has a `tljhadmin` username, and the account needs to be created with the `nativeauthenticator` like anyone else, however the email will *not* need to be validated for this user. This is part of TLJH settings, as described in step 1 of https://tljh.jupyter.org/en/latest/install/custom-server.html
