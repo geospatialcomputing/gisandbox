@@ -3,6 +3,8 @@ GISandbox is a play place for researchers and educators to learn about, experime
 
 ## the current version is a (working) prototype with some rough edges
 
+Includes R and python with a number of relevant geospatial packages.
+
 # Instructions
 
 1. Create a server instance in Jetstream, e.g. via [Atmosphere](https://use.jetstream-cloud.org/) or Google Cloud, AWS, or somewhere. Only Ubuntu LTS 20.04 is supported for now. It might work on other Debian-based Linux distributions.
@@ -16,6 +18,5 @@ GISandbox is a play place for researchers and educators to learn about, experime
 
 # Notes
 1. This does everything that https://tljh.jupyter.org/en/latest/install/custom-server.html suggests doing for you, **besides** creating users
-2. Only python is supported. There is some stubs for installing R and related, it's not fully working and but for now it is commented out
 3. The Jupyterhub admin has a `tljhadmin` username, and the account needs to be created with the `nativeauthenticator` like anyone else, however the email will *not* need to be validated for this user. This is part of TLJH settings, as described in step 1 of https://tljh.jupyter.org/en/latest/install/custom-server.html
 

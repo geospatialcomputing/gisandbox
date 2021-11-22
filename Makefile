@@ -1,6 +1,6 @@
 SHELL:=/bin/bash
 
-all: check_root check_os tools tljh usehttps other nativeauth libspatialindex netcdf_libs pythonlibs gdal rasterio java netlogo r-warning final-message
+all: check_root check_os tools tljh usehttps other nativeauth libspatialindex netcdf_libs pythonlibs gdal rasterio java netlogo kernel-r r-libs final-message
 
 check_root:
 	@if [[ `whoami` = "root" ]]; then \
@@ -87,22 +87,10 @@ java:
         fi
 
 r-libs:
-	DEBIAN_FRONTEND=noninteractive apt -y install r-base r-cran-sp r-cran-rjava
-	DEBIAN_FRONTEND=noninteractive apt -y install libproj-dev # dependency for RGDAL below
-	# missing packages: sdm pdbZMQ
-	for item in raster dismo repr IRdisplay evaluate crayon uuid digest devtools; do \
-                echo -e "****************\n *** $${item} ***\n****************"; \
-                Rscript --slave --no-save --no-restore-history -e \
-                    "install.packages(pkgs='$${item}', dependencies=TRUE, repos=c('http://ftp.heanet.ie/mirrors/cran.r-project.org/')); if ( ! library('$${item}', character.only=TRUE, logical.return=TRUE) ) {quit(status=1, save='no')}"; \
-        done
-	Rscript --slave --no-save --no-restore-history -e \
-            "install.packages(pkgs='rgdal', dependencies=TRUE, repos=c('http://ftp.heanet.ie/mirrors/cran.r-project.org/')); if ( ! library('rgdal', character.only=TRUE, logical.return=TRUE) ) {quit(status=1, save='no')}"
-	
-kernel-r:
-	exit 1
+	/opt/tljh/user/bin/conda install --yes -c r r-rjava r-sp r-raster r-dismo r-repr r-irdisplay r-evaluate r-crayon r-uuid r-digest r-devtools r-rgdal
 
-r-warning:
-	echo "Not installed anything about R"
+kernel-r:
+	/opt/tljh/user/bin/conda install --yes -c r r-irkernel r-recommended r-essentials
 
 netlogo:
 	$(eval NETLOGO_VER := 6.2.0)
