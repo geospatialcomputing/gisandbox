@@ -18,5 +18,5 @@ Includes R and python with a number of relevant geospatial packages.
 
 # Notes
 1. This does everything that https://tljh.jupyter.org/en/latest/install/custom-server.html suggests doing for you, **besides** creating users
-3. The Jupyterhub admin has a `tljhadmin` username, and the account needs to be created with the `nativeauthenticator` like anyone else, however the email will *not* need to be validated for this user. This is part of TLJH settings, as described in step 1 of https://tljh.jupyter.org/en/latest/install/custom-server.html
-
+3. The installation utilizes a self-signed certificate, which browsers freak out about (despite being safer than not using HTTPS at all which instead browsers like better). To avoid this problem and use an official certificate, see CERTIFICATE.md
+2. The Jupyterhub admin has a `tljhadmin` username, and the account needs to be created with the `nativeauthenticator` like anyone else, however the email will *not* need to be validated for this user. This is part of TLJH settings, as described in step 1 of https://tljh.jupyter.org/en/latest/install/custom-server.html
