@@ -11,6 +11,7 @@ Includes R and python with a number of relevant geospatial packages.
 2. Login into that system
 3. Make sure you have root access and make is installed, e.g. by running `sudo apt install make` (if this fails, you cannot move forward)
 4. Clone this repository and cd into the cloned directory
+4. Checkout the version you intend to utilize (could be the HEAD if you so prefer, or better one of the official releases aka tags)
 5. Run `sudo make`
 6. When that completes successfully, open and **EDIT** in the shell the [`post_makefile_script`](post_makefile_script), following the instructions inside there (we will eventually document them better here)
 7. Run `sudo ./post_makefile_script`
