@@ -1,4 +1,4 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/geospatialcomputing/gisandbox/HEAD?filepath=Welcome.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/geospatialcomputing/gisandbox/HEAD?filepath=/Welcome.ipynb)
 
 # GISandbox
 GISandbox is a play place for researchers and educators to learn about, experiment with, and advance geographic information systems and science (GIS) and geospatial computing.
