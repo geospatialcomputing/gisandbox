@@ -1,3 +1,6 @@
+# Dummy file for non-phony target with some installation info
+netlogo
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
