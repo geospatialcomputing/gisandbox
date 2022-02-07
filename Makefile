@@ -1,6 +1,6 @@
 SHELL:=/bin/bash
 
-all: check_root check_os tools tljh usehttps other nativeauth libspatialindex netcdf_libs pythonlibs gdal rasterio java netlogo kernel-r r-libs final-message
+all: check_root check_os tools tljh usehttps other nativeauth java netlogo conda-everything final-message
 
 check_root:
 	@if [[ `whoami` = "root" ]]; then \
@@ -37,7 +37,7 @@ usehttps:
 	tljh-config reload proxy
 
 other:
-	tljh-config set user_environment.default_app jupyterlab
+	tljh-config set user_environment.default_app jupyterlab # TODO TBC
 	/opt/tljh/user/bin/pip install --upgrade pip
 	/opt/tljh/hub/bin/pip3 install --upgrade pip
 
@@ -85,6 +85,9 @@ java:
             echo "Don't know what java to install for Ubuntu $${DIST_VER}"; \
             exit 1; \
         fi
+
+conda-everything:
+	/opt/tljh/user/bin/conda env update --file environment.yml
 
 r-libs:
 	/opt/tljh/user/bin/conda install --yes -c r r-rjava r-sp r-raster r-dismo r-repr r-irdisplay r-evaluate r-crayon r-uuid r-digest r-devtools r-rgdal
