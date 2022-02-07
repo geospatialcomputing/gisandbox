@@ -29,7 +29,7 @@ MY_IP=`curl https://ipecho.net/plain`
 #tljh-config set auth.NativeAuthenticator.secret_key `/opt/tljh/user/bin/python -c 'import random, string; print("".join(random.choices(string.ascii_uppercase + string.ascii_lowercase + string.digits,k=64)))'`
 
 
-# this will need to be here regardless, because we are changing settings with tljh-config and /opt/tljh/config/jupyterhub_config.d
+# changing settings with tljh-config requires a reload
 tljh-config reload
 
 echo
