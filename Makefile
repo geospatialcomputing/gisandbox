@@ -97,9 +97,9 @@ netlogo:
 	mkdir -p /opt
 	cd /opt; wget https://ccl.northwestern.edu/netlogo/$(NETLOGO_VER)/NetLogo-$(NETLOGO_VER)-64.tgz; tar xf NetLogo-$(NETLOGO_VER)-64.tgz;
 	PATH=$${PATH}:/opt/NetLogo\ $(NETLOGO_VER)/; /opt/tljh/user/bin/pip install pyNetLogo jpype1
-	echo export PATH="/opt/NetLogo\ $(NETLOGO_VER)":'$$PATH' >> .bashrc             # sudo-enabled user
-	echo export PATH="/opt/NetLogo\ $(NETLOGO_VER)":'$$PATH' >> ~/.bashrc           # root
-	echo export PATH="/opt/NetLogo\ $(NETLOGO_VER)":'$$PATH' >> /etc/skel/.bashrc   # future users
+	echo export PATH="/opt/NetLogo\ $(NETLOGO_VER)":'$$PATH' >> ~${SUDO_USER}/.bashrc     # sudo-enabled user
+	echo export PATH="/opt/NetLogo\ $(NETLOGO_VER)":'$$PATH' >> ~/.bashrc                 # root
+	echo export PATH="/opt/NetLogo\ $(NETLOGO_VER)":'$$PATH' >> /etc/skel/.bashrc         # future users
 	echo Netlogo has been installed in /opt > netlogo
 
 final-message:
