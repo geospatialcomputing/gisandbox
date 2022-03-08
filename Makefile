@@ -1,6 +1,6 @@
 SHELL:=/bin/bash
 
-all: check_root check_os tools tljh usehttps other nativeauth java netlogo conda-everything final-message
+all: check_root check_os tools tljh usehttps other nativeauth java netlogo conda-everything multi-env final-message
 
 check_root:
 	@if [[ `whoami` = "root" ]]; then \
@@ -90,10 +90,16 @@ conda-everything:
 	/opt/tljh/user/bin/conda env update --file environment.yml
 
 r-libs:
+	# needs a named environment
 	/opt/tljh/user/bin/conda install --yes -c r r-rjava r-sp r-raster r-dismo r-repr r-irdisplay r-evaluate r-crayon r-uuid r-digest r-devtools r-rgdal
 
 kernel-r:
+	# needs the same named environment
 	/opt/tljh/user/bin/conda install --yes -c r r-irkernel r-recommended r-essentials
+
+multi-env:
+	/opt/tljh/user/bin/conda install nb_conda_kernels
+	/opt/tljh/user/bin/conda install -n gisandbox ipykernel
 
 netlogo:
 	$(eval NETLOGO_VER := 6.2.0)
@@ -106,6 +112,7 @@ netlogo:
 	echo Netlogo has been installed in /opt > netlogo
 
 final-message:
+	@PATH=/opt/tljh/user/bin/:"${PATH}" python -m nb_conda_kernels list
 	@echo
 	@echo "***************************************************************************"
 	@echo "* Congratulations, your JupyterHub installation is up and running         *"
