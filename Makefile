@@ -98,8 +98,8 @@ kernel-r:
 	/opt/tljh/user/bin/conda install --yes -c r r-irkernel r-recommended r-essentials
 
 multi-env:
-	/opt/tljh/user/bin/conda install nb_conda_kernels
-	/opt/tljh/user/bin/conda install -n gisandbox ipykernel
+	/opt/tljh/user/bin/conda install --yes nb_conda_kernels
+	/opt/tljh/user/bin/conda install --yes -n gisandbox ipykernel
 
 netlogo:
 	$(eval NETLOGO_VER := 6.2.0)
