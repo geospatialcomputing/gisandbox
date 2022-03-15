@@ -1,6 +1,6 @@
 SHELL:=/bin/bash
 
-all: check_root check_os tools tljh usehttps other nativeauth java netlogo conda-everything multi-env final-message
+all: check_root check_os tools tljh usehttps other nativeauth java netlogo conda-python conda-R multi-env final-message
 
 check_root:
 	@if [[ `whoami` = "root" ]]; then \
@@ -45,35 +45,6 @@ nativeauth:
 	tljh-config set auth.type nativeauthenticator.NativeAuthenticator
 	tljh-config reload proxy
 
-libspatialindex:
-	rm -fr /tmp/libspatialindex
-	mkdir /tmp/libspatialindex
-	@DIST_VER=`lsb_release -r | awk '{print $$2}'`; \
-        if [[ $${DIST_VER} = "20.04" ]]; then \
-            echo "Installing libspatialindex-c6 for Ubuntu $${DIST_VER}"; \
-	    DEBIAN_FRONTEND=noninteractive apt -y install libspatialindex-c6; \
-        else \
-	    echo "Warning, only Ubuntu 20.04 is supported" \
-            echo "Installing libspatialindex-c4v5 for Ubuntu $${DIST_VER}"; \
-            DEBIAN_FRONTEND=noninteractive apt -y install libspatialindex-c4v5; \
-        fi
-
-netcdf_libs:
-	DEBIAN_FRONTEND=noninteractive apt -y install libhdf5-serial-dev netcdf-bin libnetcdf-dev
-
-pythonlibs:
-	/opt/tljh/user/bin/pip install numpy scipy folium fiona shapely cesiumpy matplotlib pandas
-	/opt/tljh/user/bin/pip install netCDF4
-	/opt/tljh/user/bin/pip install rtree geopandas plotly sklearn keras tensorflow
-	/opt/tljh/user/bin/pip install pysal # see https://github.com/pysal/pysal/issues/1070
-
-gdal:
-	DEBIAN_FRONTEND=noninteractive apt -y install libgdal-dev
-	DEBIAN_FRONTEND=noninteractive apt -y install python3-gdal
-
-rasterio:
-	/opt/tljh/user/bin/pip install rasterio # depends on GDAL
-
 java:
 	@DIST_VER=`lsb_release -r | awk '{print $$2}'`; \
         JAVA_VER=openjdk-16-jdk; \
@@ -86,16 +57,11 @@ java:
             exit 1; \
         fi
 
-conda-everything:
+conda-python:
 	/opt/tljh/user/bin/conda env update --file environment.yml
 
-r-libs:
-	# needs a named environment
-	/opt/tljh/user/bin/conda install --yes -c r r-rjava r-sp r-raster r-dismo r-repr r-irdisplay r-evaluate r-crayon r-uuid r-digest r-devtools r-rgdal
-
-kernel-r:
-	# needs the same named environment
-	/opt/tljh/user/bin/conda install --yes -c r r-irkernel r-recommended r-essentials
+conda-R:
+	/opt/tljh/user/bin/conda env update --file R-environment.yml
 
 multi-env:
 	/opt/tljh/user/bin/conda install --yes nb_conda_kernels

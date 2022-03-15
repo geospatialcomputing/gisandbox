@@ -1,0 +1,20 @@
+name: Rgisandbox
+channels:
+  - conda-forge
+dependencies:
+  - r
+  - r-irkernel
+  - r-recommended
+  - r-essentials
+  - r-rjava
+  - r-sp
+  - r-raster
+  - r-dismo
+  - r-repr
+  - r-irdisplay
+  - r-evaluate
+  - r-crayon
+  - r-uuid
+  - r-digest
+  - r-devtools
+  - r-rgdal
