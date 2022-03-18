@@ -9,7 +9,7 @@ If you intend to utilize terms of service, uncomment the `auth.NativeAuthenticat
 include the desired URL (it could be on same or different server, with a relative or an absolute link)
 
 2. **Captcha** (optional, highly recommended for servers staying up more than few hours)
-To prevent scripted attacks, [register with ReCaptcha](https://www.google.com/recaptcha/admin/create) and
+To prevent scripted attacks, [register with ReCaptcha](https://www.google.com/recaptcha/admin/create) (have to select v2) and
 uncomment the `auth.NativeAuthenticator.recaptcha_*` lines completing them with the keys that ReCaptcha
 provided you
 
