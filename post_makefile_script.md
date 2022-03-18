@@ -14,13 +14,15 @@ uncomment the `auth.NativeAuthenticator.recaptcha_*` lines completing them with 
 provided you
 
 3. **Email authentication** (optional, highly recommended for servers with more than a handful of users)
-   1. Uncomment `auth.NativeAuthenticator.allow_self_approval_for` and select a desired regular expression for the desired email address (the one included will allow anybody with an `.edu` account)
-   2. Decide if you want to use an external email server (in which case you must uncomment `c.Authenticator.self_approval_server` and add its details, **including the password**) or if you want to install one in your cloud instance, in which case you don't need to do anything in this file, but you do have to install the email server on the cloud instance. See the [documentation](https://native-authenticator.readthedocs.io/en/latest/options.html#allow-self-serve-approval) for more details
-   3. Uncomment `c.Authenticator.self_approval_email` with a template email to send. Don't forget to warn the recipients to **not** click on the link if they have not registered themselves, otherwise an attacker could just create a bunch of accounts and hope that someone clicks on the email enabling at least one
+   1. Uncomment `auth.NativeAuthenticator.allow_self_approval_for` and select a desired regular expression for the desired email address which you would like to enable without your intervention (the included regular expression will allow anybody with an `.edu` account). Users who register with different email will appear in the admin control panel [as normal](https://native-authenticator.readthedocs.io/en/latest/quickstart.html#authorize-un-authorize-or-discard-users) 
+   2. Decide if you want to use an external email server (in which case you must uncomment `c.Authenticator.self_approval_server` and add its details, **including the password**, so a dedicated email account is strongly reccomended) or if you want to install a passwordless email server in your cloud instance (in which case you don't need to do anything in this file, but you do have to install the local email server separately). See the [documentation](https://native-authenticator.readthedocs.io/en/latest/options.html#allow-self-serve-approval) for more details
+   3. Uncomment `c.Authenticator.self_approval_email` with a template email to send. A barebone one is provided as example. Don't forget to warn the recipients to **not** click on the link if they have not registered themselves, otherwise an attacker could just create a bunch of accounts and hope that someone clicks on the email enabling at least one
 
-4. Anything else you may want from https://native-authenticator.readthedocs.io/ taking in mind that this documentation 
+4. Add anything else you may want from https://native-authenticator.readthedocs.io/ (for example enforcing password strength,
+block users after failed logins, etc)  taking in mind that this documentation 
 uses the `jupyterhub_config.py` syntax, not the TLJH one which you are supposed to use here. For details on the latter
-and how to translate between the two, [see here](https://tljh.jupyter.org/en/latest/topic/authenticator-configuration.html#setting-authenticator-properties)
+and how to translate between the
+two, [see here](https://tljh.jupyter.org/en/latest/topic/authenticator-configuration.html#setting-authenticator-properties)
 
-Note that if you make mistakes, the server may refuse to start as described for example in this [issue](https://github.com/geospatialcomputing/gisandbox/issues/7)
+Note that if you make mistakes, the server may refuse to start as described in this [issue](https://github.com/geospatialcomputing/gisandbox/issues/7)
 
