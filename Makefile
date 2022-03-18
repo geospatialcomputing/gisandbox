@@ -1,6 +1,6 @@
 SHELL:=/bin/bash
 
-all: check_root check_os tools tljh usehttps other nativeauth conda-python conda-R multi-env java netlogo final-message
+all: check_root check_os tools tljh usehttps other nativeauth conda-python conda-R multi-env skeleton java netlogo final-message
 
 check_root:
 	@if [[ `whoami` = "root" ]]; then \
@@ -54,6 +54,9 @@ conda-R:
 multi-env:
 	/opt/tljh/user/bin/conda install --yes nb_conda_kernels
 	/opt/tljh/user/bin/conda install --yes -n gisandbox ipykernel
+	
+skeleton:
+	cp Welcome.ipynb /etc/skel/
 
 java:
 	@DIST_VER=`lsb_release -r | awk '{print $$2}'`; \
