@@ -9,7 +9,7 @@ Neither of them includes *backups* of any kind.
 
 GISandbox greatly simplifies user management thanks to pre-made email-based [NativeAuthenticator](https://github.com/jupyterhub/nativeauthenticator) setup, which you will have to only minimally configure as described [here](post_makefile_script.md)
 
-# Instructions
+# Install Instructions
 
 For MyBinder, just click the button above and you are done. Note that [only the Python environment is supported on MyBinder](https://github.com/geospatialcomputing/gisandbox/issues/10).
 
@@ -35,3 +35,17 @@ instructions inside the file and/or the [more detailed ones](post_makefile_scrip
 9. Enjoy your newly installed GISandbox instance, which you can login into via Jupyterhub, by pointing your browser to the specified IP. Note that being a temporarily IP number the HTTPS certificate is self-signed and the browsers will complain about it.
 10. The Jupyterhub administrator username is `tljhadmin`, and the account needs to be created with the `nativeauthenticator` like anyone else, however the email will *not* need to be validated for this one user, so create the account as soon as the server is up, to avoid the risk that someone else does. This is part of TLJH settings, as described in step 1 of https://tljh.jupyter.org/en/latest/install/custom-server.html
 11. Optionally, to avoid the browser certificate complains and to have a more permanent/professional URL, you may register a Domain Name, create a DNS instance, get signed certificates from an official authority such as [Let's Encrypt](https://letsencrypt.org/) and configure all of this in your server. See [CERTIFICATE.md](CERTIFICATE.md) for details about that.
+
+# Use Instructions
+
+For the MyBinder version, just click on the above button and you will land on the server with the single supported environment, equivalent to
+the `Python [conda env:gisandbox]` described below. See also [here](https://github.com/geospatialcomputing/gisandbox/issues/10).
+
+For cloud, have your users create an account and login. It should be pretty straightforward and self explaining.
+Once logged in, have them wait for the server to start, then they should see the following:
+
+![Screenshot](GISandbox.png)
+
+Most notably there are 5 kernels, but only 2 are useful and they are `Python [conda env:gisandbox]` and `R [conda env:Rgisandbox]`. The
+other three are artifact of the way the system is configured which are not immediate to hide/remove without removing
+functionality or breaking compatibility with the MyBinder version.
