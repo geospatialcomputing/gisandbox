@@ -7,7 +7,7 @@ The current version is a well working prototype. It includes R and Python with a
 It supports both [MyBinder](https://mybinder.org/) (with all its caveats) and custom install in the cloud.
 Neither of them includes *backups* of any kind.
 
-GISandbox greatly simplifies user management thanks to pre-made email-based [NativeAuthenticator](https://github.com/jupyterhub/nativeauthenticator) setup, which you will have to only minimally configure (as below).
+GISandbox greatly simplifies user management thanks to pre-made email-based [NativeAuthenticator](https://github.com/jupyterhub/nativeauthenticator) setup, which you will have to only minimally configure as described [here](post_makefile_script.md)
 
 # Instructions
 
@@ -23,7 +23,7 @@ Only Ubuntu LTS 20.04 is supported for now. It might already be working  on othe
 5. Clone this repository and cd into the cloned directory
 6. Checkout the version you intend to utilize (could be the HEAD if you so prefer, or better one of the official releases aka tags)
 7. Run `sudo make`
-8. When that completes successfully, open and **EDIT** in the shell the [`post_makefile_script`](post_makefile_script), following the instructions inside there (we will eventually document them better here)
+8. When that completes successfully, open and **EDIT** in the shell the [`post_makefile_script`](post_makefile_script), following the instructions inside the files and/or the [ones posted in this repo](post_makefile_script.md)
 9. Run `sudo ./post_makefile_script` it will conclude with a message such as
 ```
 ***************************************************************************                                                                 
