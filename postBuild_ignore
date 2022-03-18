@@ -1,3 +1,0 @@
-#!/bin/bash
-
-sudo make tools java r-libs kernel-r final-message
