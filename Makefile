@@ -1,6 +1,6 @@
 SHELL:=/bin/bash
 
-all: check_root check_os tools tljh usehttps other nativeauth java netlogo conda-python conda-R multi-env final-message
+all: check_root check_os tools tljh usehttps other nativeauth conda-python conda-R multi-env java netlogo final-message
 
 check_root:
 	@if [[ `whoami` = "root" ]]; then \
@@ -45,6 +45,16 @@ nativeauth:
 	tljh-config set auth.type nativeauthenticator.NativeAuthenticator
 	tljh-config reload proxy
 
+conda-python:
+	/opt/tljh/user/bin/conda env update --file environment.yml
+
+conda-R:
+	/opt/tljh/user/bin/conda env update --file R-environment.yml
+
+multi-env:
+	/opt/tljh/user/bin/conda install --yes nb_conda_kernels
+	/opt/tljh/user/bin/conda install --yes -n gisandbox ipykernel
+
 java:
 	@DIST_VER=`lsb_release -r | awk '{print $$2}'`; \
         JAVA_VER=openjdk-16-jdk; \
@@ -56,16 +66,6 @@ java:
             echo "Don't know what java to install for Ubuntu $${DIST_VER}"; \
             exit 1; \
         fi
-
-conda-python:
-	/opt/tljh/user/bin/conda env update --file environment.yml
-
-conda-R:
-	/opt/tljh/user/bin/conda env update --file R-environment.yml
-
-multi-env:
-	/opt/tljh/user/bin/conda install --yes nb_conda_kernels
-	/opt/tljh/user/bin/conda install --yes -n gisandbox ipykernel
 
 netlogo:
 	$(eval NETLOGO_VER := 6.2.0)
