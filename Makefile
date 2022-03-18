@@ -1,6 +1,6 @@
 SHELL:=/bin/bash
 
-all: check_root check_os tools tljh usehttps other nativeauth conda-python conda-R multi-env skeleton java netlogo final-message
+all: check_root check_os tools tljh usehttps pip lab nativeauth conda-python conda-R multi-env skeleton java netlogo final-message
 
 check_root:
 	@if [[ `whoami` = "root" ]]; then \
@@ -36,10 +36,12 @@ usehttps:
               tljh-config set https.tls.cert /etc/mycerts/$${MY_IP}.cert
 	tljh-config reload proxy
 
-other:
-	tljh-config set user_environment.default_app jupyterlab # TODO TBC
+pip:
 	/opt/tljh/user/bin/pip install --upgrade pip
 	/opt/tljh/hub/bin/pip3 install --upgrade pip
+	
+lab:
+	tljh-config set user_environment.default_app jupyterlab
 
 nativeauth:
 	tljh-config set auth.type nativeauthenticator.NativeAuthenticator
