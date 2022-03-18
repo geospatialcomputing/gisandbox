@@ -10,7 +10,7 @@ include the desired URL (it could be on same or different server, with a relativ
 
 2. **Captcha** (optional, highly recommended for servers staying up more than few hours)
 To prevent scripted attacks, [register with ReCaptcha](https://www.google.com/recaptcha/admin/create) (have to select v2) and
-uncomment the `auth.NativeAuthenticator.recaptcha_*` lines completing them with the keys that ReCaptcha
+uncomment the `auth.NativeAuthenticator.recaptcha_*` lines completing them with the `keys` that ReCaptcha
 provided you
 
 3. **Email authentication** (optional, highly recommended for servers with more than a handful of users)
