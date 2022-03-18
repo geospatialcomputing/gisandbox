@@ -3,11 +3,11 @@
 # GISandbox
 GISandbox is a play place for researchers and educators to learn about, experiment with, and advance geographic information systems and science (GIS) and geospatial computing.
 
-The current version is a well working prototype. It includes R and python with a number of relevant geospatial packages.
+The current version is a well working prototype. It includes R and Python with a number of relevant geospatial packages.
+It supports both [MyBinder](https://mybinder.org/) (with all its caveats) and custom install in the cloud.
+Neither of them includes *backups* of any kind.
 
-It supports both MyBinder (with all its caveats) and custom install in the cloud. Neither of them includes *backups* of any kind.
-
-It greatly simplifies user management thanks to email-based [NativeAuthenticator](https://github.com/jupyterhub/nativeauthenticator) setup.
+GISandbox greatly simplifies user management thanks to pre-made email-based [NativeAuthenticator](https://github.com/jupyterhub/nativeauthenticator) setup, which you will have to only minimally configure (as below).
 
 # Instructions
 
