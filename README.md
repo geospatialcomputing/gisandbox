@@ -17,7 +17,11 @@ For cloud deployment:
 
 1. Create a server instance in your favorite cloud, e.g. in Jetstream via the [Atmosphere](https://use.jetstream-cloud.org/) interface.
 It should work identically on Google Cloud, AWS, or somewhere else.
-Only Ubuntu LTS 20.04 is supported for now. It might already be working  on other Debian-based Linux distributions, but we don't have the time to test and support anything else (if you do, please [submit an issue](https://github.com/geospatialcomputing/gisandbox/issues/new) with your positve or negative experience about it). It will not work out of the box with non-Debian based distribution, since it uses `apt`, however we have reduced the number of `apt` calls to just two and it should be easy to port it to `yum`-based systems. If you do, please make a pull request!
+Only Ubuntu LTS 20.04 is supported for now.
+It might already be working  on other Debian-based Linux distributions, but we don't have the time to test and support anything else (if you do, please [submit an issue](https://github.com/geospatialcomputing/gisandbox/issues/new) with your positve or negative experience about it).
+It will not work out of the box with non-Debian based distribution, since it uses `apt`, however we have reduced the number of `apt` calls to just two and it should be easy to port it to `yum`-based systems.
+Moreover, The Littlest Jupyterhub (which this project is based on) at present only works in Ubuntu, and to make it work in e.g. CentOS you will have to install Jupyter directly, for example as described [here](https://canthonyscott.com/deploying-jupyterhub-on-a-mulit-user-centos-server/).
+If you port it to another platform, please make a pull request!
 3. Login into that system
 4. Make sure you have root access and `make` is installed, e.g. by running `sudo apt install make` (if this fails, you cannot move forward)
 5. Clone this repository and cd into the cloned directory
