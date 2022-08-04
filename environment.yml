@@ -16,7 +16,6 @@ dependencies:
     - shapely
     - folium
     - pysal
-    - cesiumpy
     - matplotlib
     - netCDF4
     - rtree
